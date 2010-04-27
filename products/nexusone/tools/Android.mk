@@ -1,4 +1,3 @@
-#
 # Copyright (C) 2009 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,18 +11,32 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
+
+ifeq ($(TARGET_DEVICE),passion)
+ifneq ($(BUILD_TINY_ANDROID),true)
+
+LOCAL_PATH:= $(call my-dir)
 
 #
-# This file should set PRODUCT_MAKEFILES to a list of product makefiles
-# to expose to the build system.  LOCAL_DIR will already be set to
-# the directory containing this file.
-#
-# This file may not rely on the value of any variable other than
-# LOCAL_DIR; do not use any conditionals, and do not look up the
-# value of any variable that isn't set in this file or in a file that
-# it includes.
+# btconfig
 #
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/avatar_nexusone.mk
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES:= btconfig.c
+
+LOCAL_C_INCLUDES := \
+    system/bluetooth/bluedroid/include \
+    system/bluetooth/bluez-clean-headers
+
+LOCAL_SHARED_LIBRARIES := \
+    libbluedroid
+
+LOCAL_MODULE_PATH := $(TARGET_OUT_OPTIONAL_EXECUTABLES)
+LOCAL_MODULE_TAGS := eng
+LOCAL_MODULE:= btconfig
+
+include $(BUILD_EXECUTABLE)
+
+endif # not BUILD_TINY_ANDROID
+endif # TARGET_DEVICE

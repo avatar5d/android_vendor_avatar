@@ -1,4 +1,3 @@
-#
 # Copyright (C) 2009 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,18 +11,15 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-#
-# This file should set PRODUCT_MAKEFILES to a list of product makefiles
-# to expose to the build system.  LOCAL_DIR will already be set to
-# the directory containing this file.
-#
-# This file may not rely on the value of any variable other than
-# LOCAL_DIR; do not use any conditionals, and do not look up the
-# value of any variable that isn't set in this file or in a file that
-# it includes.
-#
+LOCAL_PATH := $(call my-dir)
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/avatar_nexusone.mk
+$(call add-radio-file,recovery/images/firmware_install.565)
+$(call add-radio-file,recovery/images/firmware_error.565)
+$(call add-radio-file,recovery/images/bitmap_size.txt)
+
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := mahimahi-keypad.kcm
+include $(BUILD_KEY_CHAR_MAP)
+
+ALL_PREBUILT += $(INSTALLED_KERNEL_TARGET)
