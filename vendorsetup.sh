@@ -20,6 +20,6 @@
 # In particular, you can add lunch options with the add_lunch_combo
 # function: add_lunch_combo generic-eng
 
-add_lunch_combo avatar_nexusone-eng
-add_lunch_combo avatar_nexusone-userdebug
+add_lunch_combo avatar_passion-eng
+add_lunch_combo avatar_passion-userdebug
 

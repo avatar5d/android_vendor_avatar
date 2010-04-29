@@ -26,4 +26,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/avatar_nexusone.mk
+    $(LOCAL_DIR)/avatar_passion.mk

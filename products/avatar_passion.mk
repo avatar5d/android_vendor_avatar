@@ -1,107 +1,44 @@
-#$(call inherit-product, build/target/product/generic.mk)
+#
+# Copyright (C) 2009 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
 
-PRODUCT_POLICY := android.policy_phone
+# This is the top-level configuration for a US-configured CyanogenMod build
 
+$(call inherit-product, vendor/avatar/products/avatar_hdpi.mk)
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.rommanager.developerid=avatar
+PRODUCT_NAME := avatar_passion
+PRODUCT_BRAND := google
+PRODUCT_DEVICE := passion
+PRODUCT_MODEL := Nexus One
+PRODUCT_MANUFACTURER := HTC
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_ID=EPE54B BUILD_DISPLAY_ID=EPE54B PRODUCT_NAME=passion BUILD_FINGERPRINT=google/passion/passion/mahimahi:2.1-update1/ERE27/24178:user/release-keys PRIVATE_BUILD_DESC="passion-user 2.1-update1 ERE27 24178 release-keys"
 
+PRODUCT_COPY_FILES +=  \
+    vendor/avatar/prebuilt/passion/media/bootanimation.zip:system/media/bootanimation.zip
 
 PRODUCT_PACKAGES += \
-    framework-res \
-    AccountAndSyncSettings \
-    AlarmClock \
-    AlarmProvider \
-    Bluetooth \
-    Browser \
-    Calculator \
-    Calendar \
-    Camera \
-    CertInstaller \
-    Contacts \
-    DrmProvider \
-    Email \
-    Gallery \
-    Launcher \
-    HTMLViewer \
-    Mms \
-    Music \
-    Settings \
-    Sync \
-    Updater \
-    CalendarProvider \
-    SyncProvider \
-    Provision \
-    GoogleSearch \
-    LatinIME \
-    Phone \
-    ApplicationsProvider \
-    ContactsProvider \
-    DownloadProvider \
-    MediaProvider \
-    PicoTts \
-    SettingsProvider \
-    TelephonyProvider \
-    TtsService \
-    VpnServices \
-    UserDictionaryProvider \
-    PackageInstaller \
-    Bugreport \
-    sensors.mahimahi \
-    lights.mahimahi
+    Stk
 
-
-PRODUCT_MANUFACTURER := htc
-PRODUCT_NAME := nexusone
-PRODUCT_DEVICE := passion 
-PRODUCT_BRAND := aosp
-PRODUCT_MODEL := "Nexus One"
-
-
-# media profiles and capabilities spec
-$(call inherit-product, vendor/avatar/products/nexusone/media_profiles.mk)
-$(call inherit-product, vendor/avatar/products/nexusone/media_a1026.mk)
-# stuff common to all HTC phones
-$(call inherit-product, vendor/avatar/products/nexusone/common.mk)
-
-
-# WARNING: the most specific overlay goes first
-DEVICE_PACKAGE_OVERLAYS := vendor/avatar/products/nexusone/overlay
-
-
-# kernel (comes before PRODUCT_COPY_FILES)
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := vendor/avatar/nexusone/products/kernel
+ifdef CYANOGEN_NIGHTLY
+    PRODUCT_PROPERTY_OVERRIDES += \
+        ro.modversion=CyanogenMod-$(shell date +%m%d%Y)-NIGHTLY-N1
 else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+    PRODUCT_PROPERTY_OVERRIDES += \
+        ro.modversion=CyanogenMod-5.0.6-N1
 endif
 
+TARGET_KERNEL_CONFIG := cyanogen_mahimahi_defconfig
 
-PRODUCT_COPY_FILES += \
-    frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-    frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml \
-    vendor/avatar/products/nexusone/media_profiles.xml:system/etc/media_profiles.xml \
-    vendor/avatar/products/nexusone/mahimahi-keypad.kl:system/usr/keylayout/mahimahi-keypad.kl \
-    vendor/avatar/products/nexusone/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl \
-    vendor/avatar/products/nexusone/vold.fstab:system/etc/vold.fstab \
-    vendor/avatar/products/nexusone/init.mahimahi.rc:root/init.mahimahi.rc \
-    vendor/avatar/products/nexusone/bcm4329.ko:system/lib/modules/bcm4329.ko \
-    vendor/avatar/products/nexusone/gps.conf_US:system/etc/gps.conf \
-    $(LOCAL_KERNEL):kernel
-
-
-# we have enough storage space to hold precise GC data
-PRODUCT_TAGS += dalvik.gc.type-precise
-
-
-# Passion uses high-density artwork where available
-PRODUCT_LOCALES += hdpi
-
-
-# Pick up some sounds
-include frameworks/base/data/sounds/OriginalAudio.mk
-include frameworks/base/data/sounds/AudioPackage4.mk
-
+include vendor/htc/passion/device_passion.mk
