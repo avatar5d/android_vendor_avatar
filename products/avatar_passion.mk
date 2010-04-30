@@ -1,101 +1,78 @@
-#
-# Copyright (C) 2009 The Android Open Source Project
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
+PRODUCT_NAME := avatar_passion
+PRODUCT_BRAND := google
+PRODUCT_DEVICE := passion
+PRODUCT_MODEL := Nexus One
+PRODUCT_MANUFACTURER := HTC
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_ID=EPE54B BUILD_DISPLAY_ID=EPE54B PRODUCT_NAME=passion BUILD_FINGERPRINT=google/passion/passion/mahimahi:2.1-update1/ERE27/24178:user/release-keys PRIVATE_BUILD_DESC="passion-user 2.1-update1 ERE27 24178 release-keys"
 
-############################
-# hdpi
-############################
+TARGET_PREBUILT_KERNEL := vendor/htc/passion/kernel
 
-TARGET_OTA_SCRIPT_MODE=edify
-
-# build/target/product.core.mk
+TARGET_OTA_SCRIPT_MODE := edify
+USE_CAMERA_STUB := false
+ENABLE_ANIMATED_GIF:=true
 PRODUCT_POLICY := android.policy_phone
+TARGET_OTA_BACKUPTOOL := true
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.rommanager.developerid=avatarmod
+    ro.rommanager.developerid=avatarmod \
+    ro.modversion=avatarmod-0.0.1
 
 PRODUCT_PACKAGES += \
     framework-res \
-    Browser \
-    Contacts \
-    Launcher \
-    HTMLViewer \
-    Phone \
-    ApplicationsProvider \
-    ContactsProvider \
-    DownloadProvider \
-    MediaProvider \
-    PicoTts \
-    SettingsProvider \
-    TelephonyProvider \
-    TtsService \
-    VpnServices \
-    UserDictionaryProvider \
-    PackageInstaller \
-    Bugreport
-# end core.mk
-
-# build/target/product/generic.mk
-PRODUCT_PACKAGES += \
     AccountAndSyncSettings \
     AlarmClock \
     AlarmProvider \
+    ApplicationsProvider \
     Bluetooth \
+    Browser \
+    Bugreport \
     Calculator \
     Calendar \
+    CalendarProvider \
     Camera \
     CertInstaller \
-    DrmProvider \
-    Email \
-    Gallery \
-    Mms \
-    Music \
-    Settings \
-    Sync \
-    Updater \
-    CalendarProvider \
-    SyncProvider
-# end generic.mk
-
-USE_CAMERA_STUB := false
-
-# Let's grab the hdpi versions of apps and some extras
-PRODUCT_PACKAGES += \
+    Contacts \
+    ContactsProvider \
     DeskClock \
     DownloadProvider \
+    DrmProvider \
+    Email \
     Gallery3D \
     GlobalSearch \
+    GoogleSearch \
+    HTMLViewer \
+    LatinIME \
     Launcher2 \
     LiveWallpapers \
     LiveWallpapersPicker \
     MagicSmokeWallpapers \
+    MediaProvider \
+    Mms \
+    Music \
+    PackageInstaller \
+    Phone \
+    PicoTts \
+    Provision \
+    Settings \
+    SettingsProvider \
     SoundRecorder \
+    Stk \
+    Superuser \
+    Sync \
+    SyncProvider \
+    TelephonyProvider \
+    TtsService \
+    Updater \
+    UserDictionaryProvider \
     VisualizationWallpapers \
     VoiceDialer \
+    VpnServices \
     libRS \
-    librs_jni
-
-PRODUCT_PACKAGES += Superuser 
+    librs_jni \
+    lights.mahimahi \
+    sensors.mahimahi
 
 PRODUCT_PACKAGE_OVERLAYS := vendor/avatar/overlay
-
-# Build WebKit with V8
-#JS_ENGINE:=v8
-
-# Enable animated GIF in WebKit
-ENABLE_ANIMATED_GIF:=true
 
 # Used by BusyBox
 KERNEL_MODULES_DIR:=/system/lib/modules
@@ -106,8 +83,6 @@ TINY_TOOLBOX:=true
 # Pick up some sounds
 include frameworks/base/data/sounds/OriginalAudio.mk
 include frameworks/base/data/sounds/AudioPackage4.mk
-
-TARGET_OTA_BACKUPTOOL=True
 
 PRODUCT_COPY_FILES += \
     vendor/avatar/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml \
@@ -144,92 +119,17 @@ PRODUCT_COPY_FILES += \
     vendor/avatar/prebuilt/common/xbin/nano:system/xbin/nano \
     vendor/avatar/prebuilt/common/xbin/powertop:system/xbin/powertop
 
-PRODUCT_PACKAGES += \
-    Provision \
-    GoogleSearch \
-    LatinIME
-
-PRODUCT_LOCALES := \
-    en_US \
-    ar_EG \
-    ar_IL \
-    bg_BG \
-    ca_ES \
-    cs_CZ \
-    da_DK \
-    de_AT \
-    de_CH \
-    de_DE \
-    de_LI \
-    el_GR \
-    en_AU \
-    en_CA \
-    en_GB \
-    en_IE \
-    en_IN \
-    en_NZ \
-    en_SG \
-    en_ZA \
-    es_ES \
-    es_US \
-    fi_FI \
-    fr_BE \
-    fr_CA \
-    fr_CH \
-    fr_FR \
-    he_IL \
-    hi_IN \
-    hr_HR \
-    hu_HU \
-    id_ID \
-    it_CH \
-    it_IT \
-    iw_IL \
-    ja_JP \
-    ko_KR \
-    lt_LT \
-    lv_LV \
-    nb_NO \
-    nl_BE \
-    nl_NL \
-    pl_PL \
-    pt_BR \
-    pt_PT \
-    ro_RO \
-    ru_RU \
-    sk_SK \
-    sl_SI \
-    sr_RS \
-    sv_SE \
-    th_TH \
-    tl_PH \
-    tr_TR \
-    uk_UA \
-    vi_VN \
-    zh_CN \
-    zh_TW \
-    hdpi
-
-############################
-# end hdpi
-############################
-
-PRODUCT_NAME := avatar_passion
-PRODUCT_BRAND := google
-PRODUCT_DEVICE := passion
-PRODUCT_MODEL := Nexus One
-PRODUCT_MANUFACTURER := HTC
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_ID=EPE54B BUILD_DISPLAY_ID=EPE54B PRODUCT_NAME=passion BUILD_FINGERPRINT=google/passion/passion/mahimahi:2.1-update1/ERE27/24178:user/release-keys PRIVATE_BUILD_DESC="passion-user 2.1-update1 ERE27 24178 release-keys"
-
+# Boot animation
 PRODUCT_COPY_FILES +=  \
     vendor/avatar/prebuilt/passion/media/bootanimation.zip:system/media/bootanimation.zip
 
-PRODUCT_PACKAGES += \
-    Stk
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.modversion=avatarmod-0.0.1
-
-TARGET_PREBUILT_KERNEL := vendor/htc/passion/kernel
+PRODUCT_LOCALES := \
+    en_US \
+    de_AT \
+    de_CH \
+    de_DE \
+    en_GB \
+    fr_FR \
+    hdpi
 
 include vendor/htc/passion/device_passion.mk
