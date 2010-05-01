@@ -1,21 +1,22 @@
 PRODUCT_NAME := avatar_passion
 PRODUCT_BRAND := google
 PRODUCT_DEVICE := passion
-PRODUCT_MODEL := Nexus One
+PRODUCT_MODEL := passion
 PRODUCT_MANUFACTURER := HTC
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_ID=EPE54B BUILD_DISPLAY_ID=EPE54B PRODUCT_NAME=passion BUILD_FINGERPRINT=google/passion/passion/mahimahi:2.1-update1/ERE27/24178:user/release-keys PRIVATE_BUILD_DESC="passion-user 2.1-update1 ERE27 24178 release-keys"
 
-TARGET_PREBUILT_KERNEL := vendor/htc/passion/kernel
-
-TARGET_OTA_SCRIPT_MODE := edify
-USE_CAMERA_STUB := false
-ENABLE_ANIMATED_GIF:=true
-PRODUCT_POLICY := android.policy_phone
-TARGET_OTA_BACKUPTOOL := true
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    BUILD_ID=EPE54B \
+    BUILD_DISPLAY_ID=EPE54B \
+    PRODUCT_NAME=passion \
+    BUILD_VERSION_TAGS="ota-rel-keys,test-keys" \
+    BUILD_FINGERPRINT="google/passion/passion/mahimahi:2.1-update1/ERE27/24178:user/release-keys" \
+    PRIVATE_BUILD_DESC="passion-user 2.1-update1 ERE27 24178 release-keys" 
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.rommanager.developerid=avatarmod \
     ro.modversion=avatarmod-0.0.1
+
+TARGET_PREBUILT_KERNEL := vendor/htc/passion/kernel
 
 PRODUCT_PACKAGES += \
     framework-res \
@@ -74,13 +75,20 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGE_OVERLAYS := vendor/avatar/overlay
 
+# misc
+TARGET_OTA_SCRIPT_MODE := edify
+USE_CAMERA_STUB := false
+ENABLE_ANIMATED_GIF:=true
+PRODUCT_POLICY := android.policy_phone
+TARGET_OTA_BACKUPTOOL := true
+
 # Used by BusyBox
 KERNEL_MODULES_DIR:=/system/lib/modules
 
 # Tiny toolbox
 TINY_TOOLBOX:=true
 
-# Pick up some sounds
+# sounds
 include frameworks/base/data/sounds/OriginalAudio.mk
 include frameworks/base/data/sounds/AudioPackage4.mk
 
