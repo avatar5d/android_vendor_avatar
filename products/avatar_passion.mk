@@ -74,17 +74,13 @@ PRODUCT_PACKAGES += \
     sensors.mahimahi
 
 # misc
-TARGET_OTA_SCRIPT_MODE:=edify
-TARGET_OTA_BACKUPTOOL:=true
-USE_CAMERA_STUB:=false
-ENABLE_ANIMATED_GIF:=true
-PRODUCT_POLICY:=android.policy_phone
-
-# Used by BusyBox
-KERNEL_MODULES_DIR:=/system/lib/modules
-
-# Tiny toolbox
-TINY_TOOLBOX:=true
+TARGET_OTA_SCRIPT_MODE := edify
+TARGET_OTA_BACKUPTOO := true
+USE_CAMERA_STUB := false
+ENABLE_ANIMATED_GIF := true
+PRODUCT_POLICY := android.policy_phone
+KERNEL_MODULES_DIR := /system/lib/modules
+TINY_TOOLBOX := true
 
 # sounds
 include frameworks/base/data/sounds/OriginalAudio.mk
@@ -93,27 +89,12 @@ include frameworks/base/data/sounds/AudioPackage4.mk
 PRODUCT_COPY_FILES += \
     vendor/avatar/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml \
     vendor/avatar/prebuilt/common/etc/dnsmasq.conf:system/etc/dnsmasq.conf \
-    vendor/avatar/prebuilt/common/etc/e2fsck.conf:system/etc/e2fsck.conf \
+    vendor/avatar/prebuilt/common/etc/resolv.conf:system/etc/resolv.conf \
     vendor/avatar/prebuilt/common/etc/init.d/03firstboot:system/etc/init.d/03firstboot \
     vendor/avatar/prebuilt/common/etc/init.d/04modules:system/etc/init.d/04modules \
     vendor/avatar/prebuilt/common/etc/init.d/99complete:system/etc/init.d/99complete \
     vendor/avatar/prebuilt/common/bin/fix_permissions:system/bin/fix_permissions \
-
-# Various prebuilt stuff that hasen't been android-ized yet
-PRODUCT_COPY_FILES += \
-    vendor/avatar/prebuilt/common/lib/libncurses.so:system/lib/libncurses.so \
-    vendor/avatar/prebuilt/common/etc/resolv.conf:system/etc/resolv.conf \
-    vendor/avatar/prebuilt/common/etc/terminfo/l/linux:system/etc/terminfo/l/linux \
-    vendor/avatar/prebuilt/common/etc/terminfo/u/unknown:system/etc/terminfo/u/unknown \
-    vendor/avatar/prebuilt/common/xbin/bash:system/xbin/bash \
-    vendor/avatar/prebuilt/common/xbin/htop:system/xbin/htop \
-    vendor/avatar/prebuilt/common/xbin/irssi:system/xbin/irssi \
-    vendor/avatar/prebuilt/common/xbin/lsof:system/xbin/lsof \
-    vendor/avatar/prebuilt/common/xbin/nano:system/xbin/nano \
-    vendor/avatar/prebuilt/common/xbin/powertop:system/xbin/powertop
-
-# Boot animation
-PRODUCT_COPY_FILES +=  \
+    vendor/avatar/prebuilt/common/xbin/busybox:system/xbin/busybox \
     vendor/avatar/prebuilt/passion/media/bootanimation.zip:system/media/bootanimation.zip
 
 PRODUCT_LOCALES := \
