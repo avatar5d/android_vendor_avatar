@@ -21,12 +21,9 @@ TARGET_PREBUILT_KERNEL := vendor/htc/passion/kernel
 PRODUCT_PACKAGES += \
     framework-res \
     AccountAndSyncSettings \
-    AlarmClock \
-    AlarmProvider \
     ApplicationsProvider \
     Bluetooth \
     Browser \
-    Bugreport \
     Calculator \
     Calendar \
     CalendarProvider \
@@ -60,10 +57,8 @@ PRODUCT_PACKAGES += \
     Stk \
     Superuser \
     Sync \
-    SyncProvider \
     TelephonyProvider \
     TtsService \
-    Updater \
     UserDictionaryProvider \
     VisualizationWallpapers \
     VoiceDialer \
@@ -87,15 +82,15 @@ include frameworks/base/data/sounds/OriginalAudio.mk
 include frameworks/base/data/sounds/AudioPackage4.mk
 
 PRODUCT_COPY_FILES += \
-    vendor/avatar/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml \
-    vendor/avatar/prebuilt/common/etc/dnsmasq.conf:system/etc/dnsmasq.conf \
-    vendor/avatar/prebuilt/common/etc/resolv.conf:system/etc/resolv.conf \
-    vendor/avatar/prebuilt/common/etc/init.d/03firstboot:system/etc/init.d/03firstboot \
-    vendor/avatar/prebuilt/common/etc/init.d/04modules:system/etc/init.d/04modules \
-    vendor/avatar/prebuilt/common/etc/init.d/99complete:system/etc/init.d/99complete \
-    vendor/avatar/prebuilt/common/bin/fix_permissions:system/bin/fix_permissions \
-    vendor/avatar/prebuilt/common/xbin/busybox:system/xbin/busybox \
-    vendor/avatar/prebuilt/passion/media/bootanimation.zip:system/media/bootanimation.zip
+    vendor/avatar/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml \
+    vendor/avatar/prebuilt/etc/dnsmasq.conf:system/etc/dnsmasq.conf \
+    vendor/avatar/prebuilt/etc/resolv.conf:system/etc/resolv.conf \
+    vendor/avatar/prebuilt/etc/init.d/03firstboot:system/etc/init.d/03firstboot \
+    vendor/avatar/prebuilt/etc/init.d/04modules:system/etc/init.d/04modules \
+    vendor/avatar/prebuilt/etc/init.d/99complete:system/etc/init.d/99complete \
+    vendor/avatar/prebuilt/bin/fix_permissions:system/bin/fix_permissions \
+    vendor/avatar/prebuilt/xbin/busybox:system/xbin/busybox \
+    vendor/avatar/prebuilt/media/bootanimation.zip:system/media/bootanimation.zip
 
 PRODUCT_LOCALES := \
     en_US \
