@@ -73,14 +73,12 @@ PRODUCT_PACKAGES += \
     lights.mahimahi \
     sensors.mahimahi
 
-PRODUCT_PACKAGE_OVERLAYS := vendor/avatar/overlay
-
 # misc
-TARGET_OTA_SCRIPT_MODE := edify
-USE_CAMERA_STUB := false
+TARGET_OTA_SCRIPT_MODE:=edify
+TARGET_OTA_BACKUPTOOL:=true
+USE_CAMERA_STUB:=false
 ENABLE_ANIMATED_GIF:=true
-PRODUCT_POLICY := android.policy_phone
-TARGET_OTA_BACKUPTOOL := true
+PRODUCT_POLICY:=android.policy_phone
 
 # Used by BusyBox
 KERNEL_MODULES_DIR:=/system/lib/modules
@@ -96,22 +94,10 @@ PRODUCT_COPY_FILES += \
     vendor/avatar/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml \
     vendor/avatar/prebuilt/common/etc/dnsmasq.conf:system/etc/dnsmasq.conf \
     vendor/avatar/prebuilt/common/etc/e2fsck.conf:system/etc/e2fsck.conf \
-    vendor/avatar/prebuilt/common/etc/sysctl.conf:system/etc/sysctl.conf \
-    vendor/avatar/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
-    vendor/avatar/prebuilt/common/etc/init.d/01sysctl:system/etc/init.d/01sysctl \
     vendor/avatar/prebuilt/common/etc/init.d/03firstboot:system/etc/init.d/03firstboot \
     vendor/avatar/prebuilt/common/etc/init.d/04modules:system/etc/init.d/04modules \
-    vendor/avatar/prebuilt/common/etc/init.d/05mountsd:system/etc/init.d/05mountsd \
-    vendor/avatar/prebuilt/common/etc/init.d/10apps2sd:system/etc/init.d/10apps2sd \
-    vendor/avatar/prebuilt/common/etc/init.d/20userinit:system/etc/init.d/20userinit \
     vendor/avatar/prebuilt/common/etc/init.d/99complete:system/etc/init.d/99complete \
     vendor/avatar/prebuilt/common/bin/fix_permissions:system/bin/fix_permissions \
-    vendor/avatar/prebuilt/common/bin/usb-tether:system/bin/usb-tether \
-    vendor/avatar/prebuilt/common/bin/shutdown:system/bin/shutdown \
-    vendor/avatar/prebuilt/common/bin/compcache:system/bin/compcache \
-    vendor/avatar/prebuilt/common/bin/backuptool.sh:system/bin/backuptool.sh \
-    vendor/avatar/prebuilt/common/xbin/openvpn-up.sh:system/xbin/openvpn-up.sh \
-    vendor/avatar/prebuilt/common/xbin/dropbear-keygen:system/xbin/dropbear-keygen
 
 # Various prebuilt stuff that hasen't been android-ized yet
 PRODUCT_COPY_FILES += \
@@ -119,7 +105,6 @@ PRODUCT_COPY_FILES += \
     vendor/avatar/prebuilt/common/etc/resolv.conf:system/etc/resolv.conf \
     vendor/avatar/prebuilt/common/etc/terminfo/l/linux:system/etc/terminfo/l/linux \
     vendor/avatar/prebuilt/common/etc/terminfo/u/unknown:system/etc/terminfo/u/unknown \
-    vendor/avatar/prebuilt/common/etc/profile:system/etc/profile \
     vendor/avatar/prebuilt/common/xbin/bash:system/xbin/bash \
     vendor/avatar/prebuilt/common/xbin/htop:system/xbin/htop \
     vendor/avatar/prebuilt/common/xbin/irssi:system/xbin/irssi \
