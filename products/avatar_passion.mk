@@ -13,8 +13,8 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="passion-user 2.1-update1 ERE27 24178 release-keys" 
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.rommanager.developerid=avatarmod \
-    ro.modversion=avatarmod-0.0.1
+    ro.rommanager.developerid=avatar \
+    ro.modversion=distilled-0.129
 
 TARGET_PREBUILT_KERNEL := vendor/htc/passion/kernel
 
@@ -85,9 +85,6 @@ PRODUCT_COPY_FILES += \
     vendor/avatar/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml \
     vendor/avatar/prebuilt/etc/dnsmasq.conf:system/etc/dnsmasq.conf \
     vendor/avatar/prebuilt/etc/resolv.conf:system/etc/resolv.conf \
-    vendor/avatar/prebuilt/etc/init.d/03firstboot:system/etc/init.d/03firstboot \
-    vendor/avatar/prebuilt/etc/init.d/04modules:system/etc/init.d/04modules \
-    vendor/avatar/prebuilt/etc/init.d/99complete:system/etc/init.d/99complete \
     vendor/avatar/prebuilt/bin/fix_permissions:system/bin/fix_permissions \
     vendor/avatar/prebuilt/xbin/busybox:system/xbin/busybox \
     vendor/avatar/prebuilt/media/bootanimation.zip:system/media/bootanimation.zip
