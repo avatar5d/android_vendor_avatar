@@ -33,9 +33,9 @@ mkbootimg --base 0x20000000 --cmdline 'no_console_suspend=1 console=null' --kern
 # prepare system
 mkdir -p $STAGE/system/
 cp $PRODUCT/distilled_kernel/bcm4329.ko $PRODUCT/system/lib/modules/
-cp -rfp $PRODUCT/system/* $STAGE/system/
 find $PRODUCT/system/bin -name "*" -type l -print0 | xargs -0 rm {}; 2> /dev/null
 rm $PRODUCT/system/bin/su 
+cp -rfp $PRODUCT/system/* $STAGE/system/
 
 # clean old signed, unsigned zips
 rm $OUTSIGNED 2> /dev/null
