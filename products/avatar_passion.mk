@@ -14,7 +14,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.rommanager.developerid=avatar \
-    ro.modversion=distilled-0.130
+    ro.modversion=distilled-0.132
 
 TARGET_PREBUILT_KERNEL := vendor/htc/passion/kernel
 
@@ -76,6 +76,7 @@ ENABLE_ANIMATED_GIF := true
 PRODUCT_POLICY := android.policy_phone
 KERNEL_MODULES_DIR := /system/lib/modules
 TINY_TOOLBOX := true
+WITH_WINDOWS_MEDIA := true
 
 # sounds
 include frameworks/base/data/sounds/OriginalAudio.mk
