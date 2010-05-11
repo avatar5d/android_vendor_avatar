@@ -14,7 +14,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.rommanager.developerid=avatar \
-    ro.modversion=distilled-0.132
+    ro.modversion=distilled-0.133
 
 TARGET_PREBUILT_KERNEL := vendor/htc/passion/kernel
 

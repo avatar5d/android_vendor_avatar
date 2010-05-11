@@ -1,3 +1,4 @@
+# parse args
 for i in $*
 do
   case $i in
@@ -12,6 +13,7 @@ do
   esac
 done
 
+# validate args
 if [[ -z "$SRC" ]]; then
   echo "usage: make --src=/path/to/distilled/ [--dst=/path/to/update.zip/] [--no-kernel]"
   exit 0
@@ -29,8 +31,12 @@ if [[ $DST ]]; then
   fi
 fi
 
+# important paths
 SUROOT=$SRC/system/extras/su
 VENDOR=$SRC/vendor/avatar
+
+LASTPATH=$PATH
+export PATH=$SRC/out/host/linux-x86/bin:$SRC/prebuilt/linux-x86/toolchain/arm-eabi-4.4.0/bin:$PATH
 
 # prefer the su created by the Superuser app
 if [ -f $SUROOT/Android.mk ]; then
@@ -47,3 +53,5 @@ fi
 if [ $DST ]; then
   $VENDOR/scripts/collectandsign.sh $SRC $DST
 fi
+
+export PATH=$LASTPATH
